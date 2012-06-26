@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 28
+/extended-fields/!svn/ver/44
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/extended-fields/!svn/ver/4/LICENSE
+END
+init.rb
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/extended-fields/!svn/ver/44/init.rb
+END
+CREDITS
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/extended-fields/!svn/ver/24/CREDITS
+END

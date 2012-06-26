@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/extended-fields/!svn/ver/25/db/migrate
+END
+002_create_user_list_settings.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/extended-fields/!svn/ver/25/db/migrate/002_create_user_list_settings.rb
+END
+001_add_custom_fields_is_for_new_and_hint.rb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/extended-fields/!svn/ver/4/db/migrate/001_add_custom_fields_is_for_new_and_hint.rb
+END

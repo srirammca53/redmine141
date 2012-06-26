@@ -1,0 +1,25 @@
+	<% if @trOpen %>
+		<% # close the previously opened tr %>
+		<% while @wday_index < padTill %>
+			<td class="hours"><%=h text_field_tag('hours' + @row.to_s() +'[]','',:size => 3,
+				:onchange => "calculateTotal("+ @wday_index.to_s + ");") %>
+				<%=h hidden_field_tag('ids' + @row.to_s() +'[]','') %>
+			</td>
+			<% @wday_index += 1 %>
+		<% end %>
+		<% if padAt == 'end' %>
+			<td align="center">
+				<%=h hidden_field_tag(isTemplate ? '__template__time_entry[][comments]' : 'time_entry[][comments]', 
+					entry.nil? || @prev_template ? '' : entry.comments) %>
+
+				<%= link_to image_tag('comment.png', :id => "#{isTemplate ? '__template___comments_img_' : '_comments_img_'}", 
+					:title => "#{entry.nil? || @prev_template || entry.comments.blank? ? 'comments' : entry.comments}"),
+					"javascript:showComment(#{@row.to_s});"	%>
+				<%= link_to image_tag('delete.png'), "javascript:deleteRow(#{@row.to_s});",
+						:confirm => l(:text_are_you_sure),	# :method => :delete,
+						:title => l(:button_delete) %>
+			</td>
+			</tr>
+			<% @trOpen = false %>
+		<% end %>
+	<% end %>

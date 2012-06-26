@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/extended-fields/!svn/ver/36/app/models
+END
+link_custom_field_format.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/extended-fields/!svn/ver/1/app/models/link_custom_field_format.rb
+END
+user_list_setting.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/extended-fields/!svn/ver/36/app/models/user_list_setting.rb
+END
+wiki_custom_field_format.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/extended-fields/!svn/ver/1/app/models/wiki_custom_field_format.rb
+END
+project_custom_field_format.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/extended-fields/!svn/ver/5/app/models/project_custom_field_format.rb
+END

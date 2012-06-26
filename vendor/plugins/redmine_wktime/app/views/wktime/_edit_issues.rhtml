@@ -1,0 +1,88 @@
+<% 
+@wday_index = 1 
+@trOpen = false
+@row = 0
+@total_hours = 0
+thours = nums = Array[0.0, 0.0, 0.0, 0.0,0.0, 0.0, 0.0]
+prev_entry = nil
+entry = nil 
+%>
+
+<div class="wk-contextual">
+<%= link_to l(:button_add_row), "javascript:addRow();", :class => 'icon icon-time-add' %>
+</div>
+
+<table id="issueTable" class="list time-entries">
+<thead>
+<tr>
+	<%= render :partial => 'issue_header'%>
+</tr>
+</thead>
+<tbody>
+<% unless entries.blank? %>
+	<% entries.each do |entry| -%>
+		<% if prev_entry.nil? || 
+			(entry.project.id != prev_entry.project.id || entry.issue_id != prev_entry.issue_id || 
+			entry.activity_id  != prev_entry.activity_id || entry.spent_on == prev_entry.spent_on)  %>
+			<% # this is a new Row %>
+			<% # close the previously opened row first %>
+			<%= render :partial => 'edit_hours', :locals => {:entry => prev_entry, :isTemplate => false,
+				:padAt => 'end', :padTill => 8}%>
+
+			<%= render :partial => 'edit_issues2', :locals => {:entry => entry, :isTemplate => false,
+			:needClosedIssues => !params['closed_issue_ind'].blank?}%>			
+		<% end %>
+		<% # if it is a different row%>
+
+		<%# @wday_index += 1 %>
+		<% wday = entry.spent_on.cwday %>
+		<% if @wday_index != wday %>
+			<% # fill the days till the current day %>
+			<%= render :partial => 'edit_hours', :locals => {:entry => entry, :isTemplate => false, 
+				:padAt => 'begin', :padTill => wday}%>
+		<% end %>
+
+		<%#if this is from a previous template, don't print the hours%>
+		<td class="hours"><%=h text_field_tag('hours' + @row.to_s() +'[]', @prev_template ? '' : entry.hours,:size => 3,
+			:onchange => "calculateTotal("+ @wday_index.to_s + ");") %>
+		<%=h hidden_field_tag('ids' + @row.to_s() +'[]', @prev_template ? '' : entry.id) %></td>
+		<% thours[@wday_index-1] += entry.hours unless @prev_template%>
+		<% @wday_index += 1 %>
+		<% @total_hours += entry.hours unless @prev_template%>
+			
+		<% prev_entry = entry %>
+
+	<% end -%>
+<% else -%>
+	<% # if there are no entries, put an empty row%>
+	<%= render :partial => 'edit_issues2', :locals => {:entry => nil, :isTemplate => false,
+		:needClosedIssues => !params['closed_issue_ind'].blank?}%>
+<% end %>
+	
+	<% # pad any incomplete days %>
+	<%= render :partial => 'edit_hours', :locals => {:entry => entry, :isTemplate => false,
+		:padAt => 'end', :padTill => 8}%>
+
+	<!-- row for putting the total -->
+	<tr>
+	<td class="project"></td>
+	<td class="issue"></td>
+	<td class="activity"></td>
+	<% thours.each do |th| %>
+		<td align="center"><%= th %></td>
+	<% end %>
+	<td><b>
+	<%= l(:label_total) %>: <span id="total_hours"><%= @total_hours %></span>
+	</b></td>
+	</tr>
+	
+</tbody>
+</table>
+
+<%= submit_tag l(:button_save), :id => 'wktime_save', :disabled => !(@row > 0)%>
+<div class="splitcontentright">
+<div class="contextual">
+<%= link_to l(:button_add_row), "javascript:addRow();", :class => 'icon icon-time-add' %>
+</div>
+</div>
+<%= context_menu time_entries_context_menu_path %>

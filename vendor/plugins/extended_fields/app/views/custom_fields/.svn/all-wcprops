@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/extended-fields/!svn/ver/28/app/views/custom_fields
+END
+_options.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/extended-fields/!svn/ver/4/app/views/custom_fields/_options.rhtml
+END
+_columns.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/extended-fields/!svn/ver/28/app/views/custom_fields/_columns.rhtml
+END
+_extended.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/extended-fields/!svn/ver/19/app/views/custom_fields/_extended.rhtml
+END

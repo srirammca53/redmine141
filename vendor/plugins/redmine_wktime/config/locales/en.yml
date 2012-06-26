@@ -1,0 +1,15 @@
+# English strings go here for Rails i18n
+en:
+  my_label: "My label"
+  label_wktime: Weekly Time
+  
+  button_new_wktime: New Wk-time
+  button_continue: Continue
+  button_add_row: Add Row
+  chkbox_prev_tmpl: Previous Week's Template
+  chkbox_closed_issues: Include Previous Week's Closed Issues
+  
+  error_wktime_save_failed: "Could not save Wk-Time: %{value}"
+  error_wktime_save_nothing: "Nothing to Save"
+  
+
